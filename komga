@@ -1,0 +1,18 @@
+#version: '3.3' 
+services: komga: 
+image: gotson/komga:latest 
+container_name: komga 
+network_mode: mynet #this is for my reverse proxy 
+volumes: 
+  - /pathtoconfig/komga:/config 
+  - /path to data:/data 
+  - /etc/timezone:/etc/timezone:ro 
+  - /path to library/:/library #you will have to input this last part in the application 
+ports: 
+  - 8080:8080 
+environment: 
+  - PUID=your PUID 
+  - PGID=your PGID
+  - SERVER_SERVLET_CONTEXT_PATH=/komga #this is for my reverse proxy 
+
+restart: unless-stopped
